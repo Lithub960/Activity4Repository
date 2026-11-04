@@ -1,1 +1,1 @@
-# SoloRepository
+Hello GitHub
