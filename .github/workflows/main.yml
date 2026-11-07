@@ -19,7 +19,7 @@ jobs:
         # Run the following CLI command to update index.html
       - name: Update index.html 
         run: |
-          if [ "${{ github.actor }}" == "Lithub960" ]; then
+          if [ "${{github.actor}}" == "Lithub960" ]; then
             sed -i '/<\body>/i <p>Updated by Liam on '"$(date)"'<p>' index.html
           fi
 
@@ -32,16 +32,16 @@ jobs:
 
       - name: Update README.md
         run: |
-          echo "###Updated by ${{ github.actor }} on $(date '+%Y=%m-%d %H:%M:%S')[Commit: $(git rev-parse --short HEAD)]" >> README.md
+          echo "###Updated by ${{github.actor}} on $(date '+%Y=%m-%d %H:%M:%S')[Commit: $(git rev-parse --short HEAD)]" >> README.md
 
       # Step 4: Commit changes back to the repository
       - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@users.noreply.github.com/github.repository"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Workflow: Updated HTML and README for ${{ github.actor }}"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git push
+          git commit -m "Workflow: Updated HTML and README for ${{github.actor}}" || echo "No changes to commit"
+          git remote set-url origin https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}
+          git push origin main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
