@@ -3,7 +3,7 @@ WORKDIR /app
 COPY requirements.txt  .
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["python", "app.py"]
+CMD ["app", "app.py"]
 
 # docker build -t my-flask-app:1.0  .
 
