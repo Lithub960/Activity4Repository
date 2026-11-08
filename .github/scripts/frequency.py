@@ -1,7 +1,7 @@
 import sys
 from collections import Counter
 
-def count_vowels(file_path)
+def count_vowels(file_path):
   vowels = "aeiou"
   try: 
       with open(file_path, 'r') as file:
