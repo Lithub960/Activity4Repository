@@ -14,5 +14,3 @@ CMD ["python", "app.py"]
 # docker tag my-flask-app:1.0 username/my-flask-app:1.0
 # docker push username/my-flask-app:1.0
 # docker-compose up -d
-
-RUN git add chmod 777 entrypoint.sh
