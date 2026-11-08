@@ -6,7 +6,7 @@ GITHUB_USER=$2
 TIMESTAMP=$(date)
 
 #Update README
-echo -e "\n[$GITHUB_USER - $FREQ_RESUKT - $TIMESTAMP]" >> README.md
+echo -e "\n[$GITHUB_USER - $FREQ_RESULT - $TIMESTAMP]" >> README.md
 
 # Configure Git to use GitHub Actions user and email
 git config --global user.name "github-actions"
