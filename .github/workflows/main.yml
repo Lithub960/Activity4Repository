@@ -1,47 +1,47 @@
-# name: Collaborative Workflow
+name: Collaborative Workflow
 
-# on:
-#   push:
-#     branches:
-#     - main
+on:
+  push:
+    branches:
+    - main
 
-# jobs:
-#   update_html_and_readme:
-#     runs-on: ubuntu-latest
-#     steps:
-#       # Step 1: Checkout the repository
-#       - name: Checkout Repository
-#         uses: actions/checkout@v2
+jobs:
+  update_html_and_readme:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-#       # Step 2: Update index.html
+      # Step 2: Update index.html
 
-#         # Check of the GitHub actor is Liam
-#         # Run the following CLI command to update index.html
-#       - name: Update index.html 
-#         run: |
-#           if [ "${{github.actor}}" == "Lithub960" ]; then
-#             sed -i '/<\body>/i <p>Updated by Liam on '"$(date)"'<p>' index.html
-#           fi
+        # Check of the GitHub actor is Liam
+        # Run the following CLI command to update index.html
+      - name: Update index.html 
+        run: |
+          if [ "${{github.actor}}" == "Lithub960" ]; then
+            sed -i '/<\body>/i <p>Updated by Liam on '"$(date)"'<p>' index.html
+          fi
 
-#       # Step 3: Update README
+      # Step 3: Update README
 
-#         # Append a log entry to the README.md file
-#         # Use the CLI to append a line to README.md 
-#         # The Log entry should look like this:
-#         ### Updated by <username> on <date> [Commit: commitID]
+        # Append a log entry to the README.md file
+        # Use the CLI to append a line to README.md 
+        # The Log entry should look like this:
+        ### Updated by <username> on <date> [Commit: commitID]
 
-#       - name: Update README.md
-#         run: |
-#           echo "###Updated by ${{github.actor}} on $(date '+%Y=%m-%d %H:%M:%S')[Commit: $(git rev-parse --short HEAD)]" >> README.md
+      - name: Update README.md
+        run: |
+          echo "###Updated by ${{github.actor}} on $(date '+%Y=%m-%d %H:%M:%S')[Commit: $(git rev-parse --short HEAD)]" >> README.md
 
-#       # Step 4: Commit changes back to the repository
-#       - name: Commit and push changes
-#         run: |
-#           git config --global user.name "github-actions[bot]"
-#           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-#           git add .
-#           git commit -m "Workflow: Updated HTML and README for ${{github.actor}}" || echo "No changes to commit"
-#           git remote set-url origin https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}
-#           git push origin main
-#         env:
-#           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # Step 4: Commit changes back to the repository
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Workflow: Updated HTML and README for ${{github.actor}}" || echo "No changes to commit"
+          git remote set-url origin https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
