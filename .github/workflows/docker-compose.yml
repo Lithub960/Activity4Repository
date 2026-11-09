@@ -1,7 +1,10 @@
 # docker-compose.yml
 name: Docker Workflow
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
