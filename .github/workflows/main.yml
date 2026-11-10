@@ -11,7 +11,7 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
 
       # Step 2: Update index.html
 
