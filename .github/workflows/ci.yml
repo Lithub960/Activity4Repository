@@ -3,7 +3,7 @@ name: CI Workflow
 on:
   push:
     branches:
-      - main
+    - main
 
 jobs:
   build:
@@ -34,19 +34,19 @@ jobs:
     - name: Build Docker Image
       run: |
         docker build -t vowel-frequency-analyzer:latest .
-        docker build -t d0c4G1thub730/my-app:latest  .
+        docker build -t d0c4g1thub730/my-app:latest  .
 
     - name: Run Docker container
       run: |
         docker run --rm \
           -e "GITHUB_USER=${{github.actor}}"\
           vowel-frequency-analyzer:latest
-        docker run d0c4G1thub730/my-app:latest
+        docker run d0c4g1thub730/my-app:latest
 
     - name: Push Docker Image
       run: |
-        docker push d0c4G1thub730/my-app:latest
+        docker push d0c4g1thub730/my-app:latest
 
     - name: Deploy Docker
       run: |
-        docker compose up -d d0c4G1thub730/my-app:latest
+        docker compose up -d d0c4g1thub730/my-app:latest
