@@ -1,8 +1,7 @@
 FROM python:3.9-slim
 WORKDIR /app
-RUN pip install -r .github/*
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 COPY . .
-RUN ["/bin/bash", "-c", echo "$FREQ_RESULT"]
-ENTRYPOINT ["entrypoint.sh"]
-
-
+RUN chmod +x .github/scripts/entrypoint.sh
+ENTRYPOINT ["/app/.github/scripts/entrypoint.sh"]
