@@ -5,9 +5,9 @@ on:
     branches:
     - main
 
-concurrency:
-  group: main-${{ github.ref }}
-  cancel-in-progress: false
+# concurrency:
+#   group: main-${{ github.ref }}
+#   cancel-in-progress: false
 
 jobs:
   build:
