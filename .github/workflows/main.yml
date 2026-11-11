@@ -5,6 +5,10 @@ on:
     branches:
     - main
 
+concurrency:
+  group: main-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   update_html_and_readme:
     runs-on: ubuntu-latest
