@@ -22,8 +22,17 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-       [[ -n "$DOCKER_USERNAME" ]] && echo "DOCKER_USERNAME is set || echo "DOCKER_USERNAME is empty"
-       [[ -n "$DOCKER_PASSWORD" ]] && echo "DOCKER_PASSWORD is set || echo "DOCKER_PASSWORD is empty"
+       if [[ -n "$DOCKER_USERNAME" ]]; then
+          echo "DOCKER_USERNAME is set 
+        else
+          echo "DOCKER_USERNAME is empty"
+        fi
+      
+        if [[ -n "$DOCKER_PASSWORD" ]]; then 
+          echo "DOCKER_PASSWORD is set 
+        else
+          echo "DOCKER_PASSWORD is empty"
+        fi
        
     - name: Login to Docker Hub
       uses: docker/login-action@v4
@@ -41,7 +50,7 @@ jobs:
         docker run --rm \
           -e "GITHUB_USER=${{github.actor}}"\
           vowel-frequency-analyzer:latest
-        docker run d0c4g1thub730/my-app:latest
+
 
     - name: Push Docker Image
       run: |
@@ -49,4 +58,4 @@ jobs:
 
     - name: Deploy Docker
       run: |
-        docker compose up -d d0c4g1thub730/my-app:latest
+          docker run -d --name my-app -p 5000:5000 d0c4g1thub730/my-app:latest
