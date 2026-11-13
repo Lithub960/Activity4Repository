@@ -6,13 +6,22 @@ on:
 
 jobs:
   move-issue-to-done:
-  runs-on: ubuntu-latest
-  steps:
-    -  name: Checkout repository
-       uses: actions/checkout@v7
+    runs-on: ubuntu-latest
+    steps:
+      -  name: Checkout repository
+         uses: actions/checkout@v7
 
-    -  name: Check if PR is Mreged
-    run: | 
-      if [github.event.pull_request.merged=="True"]; then
+      -  name: Check if PR is Mreged
+         run: |
+              if: github.event.pull_request.merged==true
+                curl -X POST \
+                  -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                  -H "Accept: application/vnd.github.v3+json" \
+                  -d '{
+                      "column_id": "PROJECT_COLUMN_ID",
+                      "content_type": "Issue",
+                      "content_id": ${{ github.event.issue.id }} # Corrected Syntax
+                  }' \
+                  https://api.github.com/projects/columns/PROJECT_COLUMN_ID/cards
 
       
