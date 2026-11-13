@@ -1,4 +1,4 @@
-name: CI Workflow
+name: CI Workflow - Docker
 
 on:
   push:
@@ -42,20 +42,10 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t vowel-frequency-analyzer:latest .
-        docker build -t d0c4g1thub730/my-app:latest  .
+        docker build -t task-manager:latest .
 
     - name: Run Docker container
       run: |
         docker run --rm \
           -e "GITHUB_USER=${{github.actor}}"\
-          vowel-frequency-analyzer:latest
-
-
-    - name: Push Docker Image
-      run: |
-        docker push d0c4g1thub730/my-app:latest
-
-    - name: Deploy Docker
-      run: |
-          docker run -d --name my-app -p 5000:5000 d0c4g1thub730/my-app:latest
+          task-manager:latest
