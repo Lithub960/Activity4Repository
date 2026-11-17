@@ -36,14 +36,14 @@ class TaskPool:
         self.tasks = (task1, task2, task3, task4, task5, task6)
 
     def add_task(self, task):
-        self.task.append(task)
+        self.tasks.append(task)
 
     def get_open_tasks(self):
         return [task for task in self.tasks if task.status == "ToDo"]
 
 
     def get_done_tasks(self):
-        return [task for task in self.tasks if task.status == "ToDo"]
+        return [task for task in self.tasks if task.status == "Done"]
 
 
 def main():
