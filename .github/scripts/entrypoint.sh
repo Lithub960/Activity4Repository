@@ -9,7 +9,7 @@ python3 /app/.github/scripts/todo.py | tee /app/todo_output.txt
 echo "-----------------------"
 echo "Ececuting todo-test.py"
 echo "-----------------------"
-python3 /app/.github/scripts/todo.py | tee /app/test_output.txt
+python3 /app/.github/scripts/todo-test.py | tee /app/test_output.txt
 
 echo "-----------------------"
 echo "Ececuting update_index.sh"
