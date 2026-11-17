@@ -29,14 +29,14 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pages: write
   id-token: write
-
-concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   deploy:
