@@ -7,8 +7,8 @@ class Task:
 
 
   def mark_completed(self):
-      self.completed = True
       self.status = "Done"
+      self.completed = True
 
   def __repr__(self):
       return f"{self.title} - {'Done' if self.completed else 'ToDo'}"
@@ -38,6 +38,7 @@ class TaskPool:
 
     def add_task(self, task):
         self.tasks.append(task)
+        return task
 
     def get_open_tasks(self):
         return [task for task in self.tasks if task.status == "ToDo"]
