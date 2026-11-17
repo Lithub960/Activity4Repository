@@ -1,2 +1,3 @@
 The reason that the html thing wasn't updated dynamically is a bit of a mystery and because of time constraints, just going to accept that this did not happen. 
 Overall, there would be 9 tasks, whereby the feature branch was streamlining the first three issues completion (4 issues total), the loginUI.py thing alongside the associated fix loginUI issue (2 issues), the documentation text plus its associated issue (2 issues), final one involves deploying project onto github (1 issue)
+However, while using Copilot for conversations while working to figure out problems, things got resolved where i now have to do seperate runs for successes
