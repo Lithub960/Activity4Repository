@@ -34,7 +34,7 @@ class TaskPool:
         task2.mark_completed()
         task3.mark_completed()
 
-        self.tasks = (task1, task2, task3, task4, task5, task6)
+        self.tasks = [task1, task2, task3, task4, task5, task6]
 
     def add_task(self, task):
         self.tasks.append(task)
@@ -51,14 +51,15 @@ def main():
     pool = TaskPool()
     pool.populate()
 
-    task_titles = [task.title for task in pool.get_open_tasks()]
+    completed_titles = [task.title for task in pool.get_open_tasks()]
     print("ToDo Tasks")
-    for title in task_titles:
+    for title in completed_titles:
         print(title)
 
     completed_titles = [task.title for task in pool.get_done_tasks()]
     print("\nDone Tasks:")
-    for title in task_titles:
+    for title in completed_titles:
         print(title)
+      
 if __name__ == "__main__":
     main()
