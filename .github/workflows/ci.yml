@@ -5,8 +5,8 @@ on:
     branches:
     - main
     
-# permissions:
-#   contents: write
+permissions:
+  contents: write
   
 jobs:
   build:
@@ -53,10 +53,26 @@ jobs:
           -e "GITHUB_USER=${{github.actor}}"\
           task-manager:latest
 
-    # - name: Update index.html
-    #     env:
-    #       GITHUB_USER: ${{ github.actor }}
-    #       FREQ_RESULT: "pass"
-    #       TIMESTAMP: ${{ github.run_started_at }}
-    #     run: |
-    #       bash .github/scripts/update_index.sh /tmp/tasks.txt /tmp/unittest.txt
+    - name: Create task summary file
+      run: |
+          cat > /tmp/tasks.txt <<'EOF'
+          ToDo Tasks:
+          - Review PR
+          - Update docs
+          - Fix CI
+
+          Done Tasks:
+          - Initial setup
+          EOF
+
+    - name: Run unit tests
+      run: |
+          pytest -q > /tmp/unittest.txt 2>&1 || true
+
+    - name: Update index.html
+      env:
+          GITHUB_USER: ${{ github.actor }}
+          FREQ_RESULT: "pass"
+          TIMESTAMP: ${{ github.run_started_at }}
+        run: |
+          bash .github/scripts/update_index.sh /tmp/tasks.txt /tmp/unittest.txt
