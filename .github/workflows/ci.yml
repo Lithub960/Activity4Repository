@@ -74,16 +74,16 @@ jobs:
       run: |
         python -m pip install pytest
         PYTHONPATH=. python -m pytest -q tests
-    #     if python -m pytest -q > /tmp/unittest.txt 2>&1; then
-    #       cat /tmp/unittest.txt
-    #     else
-    #       cat /tmp/unittest.txt
-    #       exit 1
-    #     fi
+        if python -m pytest -q > /tmp/unittest.txt 2>&1; then
+          cat /tmp/unittest.txt
+        else
+          cat /tmp/unittest.txt
+          exit 1
+        fi
 
-    # - name: Fail workflow if tests failed
-    #   if: steps.tests.outcome == 'failure'
-    #   run: exit 1
+    - name: Fail workflow if tests failed
+      if: steps.tests.outcome == 'failure'
+      run: exit 1
 
     - name: Update index.html
       env:
