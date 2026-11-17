@@ -1,0 +1,13 @@
+name: Task Progression
+on:
+  issues:
+    types: [assigned]
+jobs:
+  move-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Project Board
+        uses: actions/add-to-project@v1
+        with:
+          project_id: "project_number"
+          column_name: "In Progress"
