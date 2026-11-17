@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HTML_FILE="index.html"
+"$HTML_FILE"=index.html
 
 TODO_TASKS=$(grep -A 1000 "ToDo Tasks:" "$1" | sed '1d; /Done Tasks:/,$d')
 DONE_TASKS=$(awk '/Done Tasks:/,/^[[:space:]]*$/ { \
