@@ -7,7 +7,7 @@ class Task:
 
   def mark_completed(self):
       self.completed = True
-      self.status = "Done
+      self.status = "Done"
 
   def __repr__(self):
       return f"{self.title} - {'Done' if self.completed else 'ToDo'}
