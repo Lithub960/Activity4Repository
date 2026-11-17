@@ -10,7 +10,7 @@ class Task:
       self.status = "Done"
 
   def __repr__(self):
-      return f"{self.title} - {'Done' if self.completed else 'ToDo'}
+      return f"{self.title} - {'Done' if self.completed else 'ToDo'}"
 
   def __str__(self):
       return f"Task: {self.title}, Status: {self.status}"
@@ -38,12 +38,12 @@ class TaskPool:
     def add_task(self, task):
         self.task.append(task)
 
-    def get_open_task(self):
-        return [task for task in self.task if task.status == "ToDo"]
+    def get_open_tasks(self):
+        return [task for task in self.tasks if task.status == "ToDo"]
 
 
-    def get_done_task(self):
-        return [task for task in self.task if task.status == "ToDo"]
+    def get_done_tasks(self):
+        return [task for task in self.tasks if task.status == "ToDo"]
 
 
 def main():
