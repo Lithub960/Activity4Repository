@@ -1,0 +1,12 @@
+name: Auto-Assign Labels
+on:
+  issues:
+    types: [opened]
+jobs:
+  assign-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign Label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: "Bug"
