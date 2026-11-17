@@ -1,0 +1,13 @@
+name: Close Stale Issues
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+jobs:
+  assign-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close Stale Issues
+        uses: actions/stale@v4
+        with:
+          stale-issue-message: "Closing due to inactivity."
+          days-before-stale: 30
