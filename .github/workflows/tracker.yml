@@ -11,15 +11,15 @@ jobs:
       -  name: Checkout repository
          uses: actions/checkout@v7
 
-      -  name: Check if PR is Mreged
+      -  name: Check if PR is Merged
          if: github.event.pull_request.merged == true
          run: |
            curl -X POST \
               -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               -H "Accept: application/vnd.github.v3+json" \
               -d '{
-                  "column_id": "PROJECT_COLUMN_ID", \
-                  "content_type": "Issue", \
+                  "column_id": "PROJECT_COLUMN_ID", 
+                  "content_type": "Issue", 
                   "content_id": ${{ github.event.issue.id }} # Corrected Syntax
               }' \
               https://api.github.com/projects/columns/PROJECT_COLUMN_ID/cards
