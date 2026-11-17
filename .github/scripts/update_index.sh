@@ -15,7 +15,9 @@ update_pre() {
 update_pre "pending" "$TODO_TASKS" "$HTML_FILE"
 update_pre "completed" "$DONE_TASKS" "$HTML_FILE"
 update_pre "unittest" "$UNIT_TEST_RESULTS" "$HTML_FILE"
-echo -e "\n[$GITHUB_USER - $FREQ_RESULT - $TIMESTAMP]" >> "$HTML_FILE"
+sed -i '/^\[.* - .* - .*\]$/d' "$HTML_FILE"
+printf '\n[%s - %s - %s]\n' "$GITHUB_USER" "$FREQ_RESULT" "$TIMESTAMP" >> "$HTML_FILE"
+# echo -e "\n[$GITHUB_USER - $FREQ_RESULT - $TIMESTAMP]" >> "$HTML_FILE"
 git config --global user.name "github-actions"
 git config --global user.email "github-actions@users.noreply.github.com"
 
