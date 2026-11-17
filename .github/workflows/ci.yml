@@ -4,7 +4,10 @@ on:
   push:
     branches:
     - main
-
+    
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -49,3 +52,11 @@ jobs:
         docker run --rm \
           -e "GITHUB_USER=${{github.actor}}"\
           task-manager:latest
+
+    - name: Update index.html
+        env:
+          GITHUB_USER: ${{ github.actor }}
+          FREQ_RESULT: "pass"
+          TIMESTAMP: ${{ github.run_started_at }}
+        run: |
+          bash .github/scripts/update_index.sh /tmp/tasks.txt /tmp/unittest.txt
