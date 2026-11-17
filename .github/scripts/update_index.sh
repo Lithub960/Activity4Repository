@@ -3,7 +3,7 @@
 HTML_FILE="index.html"
 
 TODO_TASKS=$(grep -A 1000 "ToDo Tasks:" "$1" | sed '1d; /Done Tasks:/,$d')
-DONE_TASKS=$(awk '/Done Tasks:/,/^[[:space:]]*$/ { \
+DONE_TASKS=$(awk '/Done Tasks:/,/^[[:space:]]*$/ { 
                   if(NR>1 && !/Done Tasks:/)print}' "$1")
 UNIT_TEST_RESULTS=$(cat "$2")
 
@@ -15,9 +15,15 @@ update_pre() {
 update_pre "pending" "$TODO_TASKS" "$HTML_FILE"
 update_pre "completed" "$DONE_TASKS" "$HTML_FILE"
 update_pre "unittest" "$UNIT_TEST_RESULTS" "$HTML_FILE"
-# echo -e "\n[$GITHUB_USER - $FREQ_RESULT - $TIMESTAMP]" >> "$HTML_FILE"
-# git config --global user.name "github-actions"
+echo -e "\n[$GITHUB_USER - $FREQ_RESULT - $TIMESTAMP]" >> "$HTML_FILE"
+git config --global user.name "github-actions"
 git config --global user.email "github-actions@users.noreply.github.com"
+
+if git diff --quiet -- "$HTML_FILE"; then
+  echo "No changes to $HTML_FILE"
+  exit 0
+fi
+
 git add "$HTML_FILE"
 git commit -m "Update HTML_FILE with new task and test data"
 git push
