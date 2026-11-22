@@ -10,8 +10,8 @@ jobs:
         # Used to be uses: actions/add-to-project@v1, now use the one below
         uses: actions/add-to-project@v1.0.2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          project-url: https://github.com/users/Lithub960/projects/1
+          # github-token: ${{ secrets.GITHUB_TOKEN }}
+          # project-url: https://github.com/users/Lithub960/projects/1
           project_id: 1
           column_name: "In Progress"
           
