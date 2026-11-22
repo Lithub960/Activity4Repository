@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update Project Board
-        uses: actions/add-to-project@v1
+        # Used to be uses: actions/add-to-project@v1, now use the one below
+        uses: actions/add-to-project@v1.0.2
         with:
           project_id: "project_number"
           column_name: "In Progress"
