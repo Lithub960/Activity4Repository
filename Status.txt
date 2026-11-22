@@ -1,0 +1,1 @@
+Deployment was initially failures, however, they became successful after the fact that index.html was updated
