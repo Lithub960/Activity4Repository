@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Update Project Board
         # Used to be uses: actions/add-to-project@v1, now use the one below
-        uses: actions/add-to-project@v1.0.2
+        uses: actions/add-to-project@v1
         with:
           project-url: https://github.com/users/Lithub960/projects/1
           project_id: "project_number"
