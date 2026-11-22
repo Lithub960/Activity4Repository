@@ -11,7 +11,7 @@ jobs:
         uses: actions/add-to-project@v1.0.2
         with:
           # github-token: ${{ secrets.GITHUB_TOKEN }}
-          # project-url: https://github.com/users/Lithub960/projects/1
-          project_id: 1
+          # project-url: https://github.com/users/Lithub960/projects/6
+          project_id: 6
           column_name: "In Progress"
           
